@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
 
 * {
-    font-family: 'Poppins';
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color:white; 
-    color:   #b57e10;
+    background-color: white;
+    color: #b57e10;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,33 +32,37 @@ nav ul {
 
 nav ul li {
     margin-right: 20px;
-    
+
 }
 
 nav ul li a {
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-    color: #b57e10 ;
+    color: #b57e10;
 }
 
 
 .nav-button {
-    display: inline-block;
     padding: 10px 20px;
-    background-color: white ;
-    color:  #b57e10;
+    background-color: transparent;
+    color: #b57e10;
     border: none;
-    border-radius: 30px;
+    border-radius: 25px;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s  ease;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
 .nav-button:hover {
-    background: linear-gradient(to right, #975f0c, #b57e10);
-    color: white;
-    transform: scale(1.05); 
-
+    border-radius: 25px;
+    border: 0;
+    cursor: pointer;
+    background: linear-gradient(135deg, #c68e17 0%, #a86b0e 100%);
+    transform: translateY(-2px);
+    color: #fff;
+    /* Button Depth */
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
-
 

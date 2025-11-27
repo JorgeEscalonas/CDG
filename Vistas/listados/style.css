@@ -1,13 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
-
 * {
-    font-family: 'Poppins';
+    box-sizing: border-box;
 }
 
 body {
     color: #333;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #fff;
+    margin: 0;
 }
 
 h2 {
@@ -16,25 +15,29 @@ h2 {
     color: #495057;
 }
 
+/* Contenedor Principal */
 .cont-table {
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
+/* Estilos de Tabla */
 table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 16px; 
+    font-size: 16px;
 }
 
 table th,
 table td {
-    padding: 8px; 
+    padding: 12px 8px;
     border: 1px solid #dee2e6;
     background-color: #fff;
+    vertical-align: middle;
 }
 
 table th {
@@ -43,71 +46,81 @@ table th {
     color: #212529;
 }
 
+table td:last-child {
+    padding: 5px;
+}
 
+/* Columnas Específicas */
+.accion-col {
+    width: 120px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.id {
+    width: 50px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* Botones Generales */
 .btn-1,
 .btn-2,
 .btn-3 {
+    display: inline-block;
+    padding: 8px 16px;
+    font-weight: 600;
     text-decoration: none;
     color: #fff;
-    padding: 5px 10px; 
-    display: inline-block;
-    margin: 0 5px;
-    border-radius: 20px;
-    transition: background-color 0.3s ease;
+    letter-spacing: 1px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
+/* Variantes de Botones */
 .btn-1 {
     background-color: #dc3545;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
 }
 
 .btn-2 {
     background-color: #007bff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
 }
 
 .btn-3 {
-    background-color: #b57e10;
+    margin: 0 4px;
 }
 
+/* Estados Hover */
 .btn-1:hover,
-.btn-2:hover,
+.btn-2:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
 .btn-3:hover {
-    background-color: #b72b37;
+    border-radius: 25px;
+    border: 0;
     cursor: pointer;
+    background: linear-gradient(135deg, #c68e17 0%, #a86b0e 100%);
+    transform: translateY(-2px);
+    color: #fff;
+    /* Button Depth */
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-table td:last-child {
-    padding: 5px; 
-}
-
-.accion-col {
-    width: 120px;
-    white-space: nowrap;
-}
-
+/* Botones en Tabla */
 .accion-col .btn-1,
 .accion-col .btn-2 {
-    padding: 3px 10px;
-    font-size: 15px;
-}
-
-.accion-col .btn-1,
-.accion-col .btn-2 {
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-.accion-col {
-    vertical-align: middle;
-    text-align: center;
-}
-
-.id {
-    width: 20px;
-    white-space: nowrap;
-}
-
-
-.id {
-    vertical-align: middle;
-    text-align: center;
+    padding: 4px 12px;
+    font-size: 14px;
+    margin: 0 4px;
 }

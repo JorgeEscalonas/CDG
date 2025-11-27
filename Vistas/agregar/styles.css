@@ -1,147 +1,334 @@
 * {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-sizing: border-box;
+    color: #333;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    line-height: 1.6;
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    margin: 0;
     background-color: #f0f0f0;
 }
 
+/* Main Form Container - Mimicking .contenedor */
 form {
-    width: 100%;
-    max-width: 600px;
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 40px 50px;
+    text-align: center;
+    border-radius: 25px;
+    width: 90%;
+    max-width: 650px;
+
+    /* Liquid Glass Effect */
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px) saturate(180%);
+    -webkit-backdrop-filter: blur(5px) saturate(180%);
+
+    /* Borders */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+
+    /* Depth and Shadow */
+    box-shadow:
+        0 8px 32px 0 rgba(0, 0, 0, 0.37),
+        inset 0 0 20px rgba(255, 255, 255, 0.05);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 fieldset {
     border: none;
     margin: 0;
     padding: 0;
+    width: 100%;
 }
 
 legend {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+    font-size: 2.45rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    font-weight: normal;
 }
 
 label {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
     display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
+    text-align: left;
+    margin-left: 10px;
 }
 
 input[type="text"],
 input[type="number"],
 select {
     width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 1rem;
+    padding: 12px 20px;
+    border-radius: 35px;
+    border: 2px solid #b57e10;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    font-weight: 500;
+    margin-bottom: 20px;
 }
 
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+select option {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Layout for rows */
 .input-row {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    width: 100%;
+    gap: 20px;
 }
 
 .column {
     width: 48%;
-    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Single column fallback for smaller screens */
+@media (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+
+    .input-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+/* Buttons */
 input[type="submit"],
 .btn-cancelar {
-    width: auto;
-    padding: 10px 20px;
-    margin: 10px 0px 5px 40px;
-    background-color: #b57e10;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    font-size: 1.1em;
+    background: linear-gradient(135deg, #b57e10 0%, #975f0c 100%);
+    padding: 12px 30px;
+    min-width: 140px;
+    border: 0;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 16px;
     cursor: pointer;
-    font-weight: bold;
+    letter-spacing: 1px;
     text-decoration: none;
-    transition: background 0.3s ease, transform 0.3s  ease;
-    align-self: center;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 10px;
+    font-weight: normal;
 }
 
 input[type="submit"]:hover,
 .btn-cancelar:hover {
-    background-color: #45a049;
-    background: linear-gradient(to right, #975f0c, #b57e10);
-    transform: scale(1.05);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-
+    background: linear-gradient(135deg, #c68e17 0%, #a86b0e 100%);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow:
+        0 6px 20px rgba(181, 126, 16, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
-.btn-cancelar {
-    width: auto;
-    padding: 10px 20px;
-    margin: 10px 0px 5px 40px;
-    background-color: #b57e10;
-    color: white;
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    color: #333;
+}
+
+body {
+    line-height: 1.6;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+/* Main Form Container - Mimicking .contenedor */
+form {
+    padding: 40px 50px;
+    text-align: center;
+    border-radius: 25px;
+    width: 90%;
+    max-width: 650px;
+
+    /* Liquid Glass Effect */
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px) saturate(180%);
+    -webkit-backdrop-filter: blur(5px) saturate(180%);
+
+    /* Borders */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+
+    /* Depth and Shadow */
+    box-shadow:
+        0 8px 32px 0 rgba(0, 0, 0, 0.37),
+        inset 0 0 20px rgba(255, 255, 255, 0.05);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+fieldset {
     border: none;
-    border-radius: 20px;
-    font-size: 1.1em;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+legend {
+    font-size: 2.45rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+    font-weight: normal;
+}
+
+label {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left;
+    margin-left: 10px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 35px;
+    border: 2px solid #b57e10;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+select option {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Layout for rows */
+.input-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+}
+
+.column {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Single column fallback for smaller screens */
+@media (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+
+    .input-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+/* Buttons */
+input[type="submit"],
+.btn-cancelar {
+    background: linear-gradient(135deg, #b57e10 0%, #975f0c 100%);
+    padding: 12px 30px;
+    min-width: 140px;
+    border: 0;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 16px;
     cursor: pointer;
-    font-weight: bold;
+    letter-spacing: 1px;
     text-decoration: none;
-    transition: background 0.3s ease, transform 0.3s  ease;
-    align-self: center;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 10px;
+    font-weight: normal;
+}
+
+input[type="submit"]:hover,
+.btn-cancelar:hover {
+    background: linear-gradient(135deg, #c68e17 0%, #a86b0e 100%);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow:
+        0 6px 20px rgba(181, 126, 16, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Specific overrides for smaller forms if needed */
+.categoria,
+.proveedores {
+    max-width: 500px;
 }
 
 .categoria legend,
 .proveedores legend {
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-    display: inline-block; 
+    font-size: 2rem;
 }
 
-.categoria label,
-.proveedores label {
-    margin-left: 1.4rem;
-}
-.categoria, .proveedores{
-    max-width: 400px;
-    padding: 1rem;
-    font-size: 1.2rem;
-    justify-content: center;
-}
 .categoria .input-row,
 .proveedores .input-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; 
+    justify-content: center;
 }
 
 .categoria .column,
 .proveedores .column {
-    width: 100%; 
-    margin-bottom: 1rem;
-}
-.categoria input[type="text"],
-.proveedores input[type="text"] {
-    width: 90%; 
-    padding: 0.4rem; 
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin: 0.8rem auto; 
-    display: block; 
+    width: 100%;
 }
