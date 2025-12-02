@@ -57,8 +57,10 @@ include_once 'vistas/header/header.php';
         </table>
         <!-- Botones para registrar y generar reportes de proveedores -->
         <br>
-        <a href="?resps=registrarProveedor" class="btn-3">Registrar Proveedor</a>
-        <a href="Reportes/reporte_proveedor.php" target="_blank" class="btn-3">Generar Reporte de Proveedores</a>
+        <div class="button-container">
+            <a href="?resps=registrarProveedor" class="btn-3">Registrar Proveedor</a>
+            <a href="Reportes/reporte_proveedor.php" target="_blank" class="btn-3">Generar Reporte de Proveedores</a>
+        </div>
     </div>
 
     <!-- Se incluyen los archivos JavaScript -->

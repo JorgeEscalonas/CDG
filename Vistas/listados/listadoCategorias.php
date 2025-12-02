@@ -51,8 +51,10 @@ include_once 'vistas/header/header.php';
         </table>
         <br>
         <!-- Botones para registrar nuevas categorías y generar reportes -->
-        <a href="?respc=categoriaC" class="btn-3">Registrar Categoria</a>
-        <a href="Reportes/reporte_categorias.php" target="_blank" class="btn-3">Generar Reporte de Categorias</a>
+        <div class="button-container">
+            <a href="?respc=categoriaC" class="btn-3">Registrar Categoria</a>
+            <a href="Reportes/reporte_categorias.php" target="_blank" class="btn-3">Generar Reporte de Categorias</a>
+        </div>
     </div>
 
     <!-- Se incluyen los archivos JavaScript -->
