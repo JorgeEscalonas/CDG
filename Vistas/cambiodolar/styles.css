@@ -1,76 +1,159 @@
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+    color: #333;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
-  }
-  
-  .contenedor {
-    width: 350px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-    background-color: #fff;
+  line-height: 1.6;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0;
+}
 
-  }
-  
-  h1 {
-    font-size: 2.45rem;
-    margin-bottom: 50px;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  label {
-    font-size: 1.2rem;
-    margin-bottom: 50px;
-  }
-  
-  input[type="text"] {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    text-align: center;
-    font-size: 1rem;
-    line-height: 1.5;
-    margin: 10px 30px 10px 30px;
+.contenedor {
+  padding: 40px 50px;
+  color: #fff;
+  text-align: center;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 550px;
 
-  }
-  
-  button[type="submit"],
-  .btn-cancelar{
-    padding: 10px 20px;
-    background-color: #b57e10;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    margin: 10px 40px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s  ease;
-    text-decoration: none;
-  }
-  
-  button[type="submit"]:hover,
-  .btn-cancelar:hover {
-    background-color:  #975f0c;
-    transform: scale(1.05);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  }
-  a{
-    text-decoration: none;
-  }
+  /* Liquid Glass Effect */
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px) saturate(180%);
+  -webkit-backdrop-filter: blur(5px) saturate(180%);
+
+  /* Borders */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+
+  /* Depth and Shadow */
+  box-shadow:
+    0 8px 32px 0 rgba(0, 0, 0, 0.37),
+    inset 0 0 20px rgba(255, 255, 255, 0.05);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 2.45rem;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+/* Form Organization */
+#formulario-dolar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Grid layout for the inner div containing inputs and buttons */
+#formulario-dolar div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+  justify-items: center;
+  align-items: center;
+}
+
+/* Hide all BR tags in the form to control spacing with CSS */
+#formulario-dolar br {
+  display: none;
+}
+
+label {
+  grid-column: 1 / -1;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input[type="text"] {
+  grid-column: 1 / -1;
+  padding: 15px 20px;
+  border-radius: 35px;
+  border: 2px solid #b57e10;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-weight: 500;
+  width: 80%;
+  text-align: center;
+}
+
+/* Buttons */
+button[type="submit"],
+.btn-cancelar {
+  background: linear-gradient(135deg, #b57e10 0%, #975f0c 100%);
+  padding: 12px 0;
+  width: 140px;
+  border: 0;
+  border-radius: 25px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  /* Reset margin */
+}
+
+button[type="submit"] {
+  justify-self: end;
+}
+
+.btn-cancelar {
+  justify-self: start;
+}
+
+button[type="submit"]:hover,
+.btn-cancelar:hover {
+  background: linear-gradient(135deg, #c68e17 0%, #a86b0e 100%);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 6px 20px rgba(181, 126, 16, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Link at the bottom */
+.btn-3 {
+  margin-top: 30px;
+  display: inline-block;
+  color: #fff;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  transition: opacity 0.3s;
+}
+
+.btn-3:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+
+}

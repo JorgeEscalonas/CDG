@@ -104,8 +104,10 @@ $categorias = $control->MODEL->listarCategorias();
         </table>
         <br>
         <!-- Botones para registrar nuevos productos y generar reportes -->
-        <a href="?resp=nuevo" class="btn-3">Registrar Producto</a>
-        <a href="Reportes/reporte_productos.php?categoria=<?php echo $categoria; ?>" target="_blank" class="btn-3">Generar Reporte de Productos</a>
+        <div class="button-container">
+            <a href="?resp=nuevo" class="btn-3">Registrar Producto</a>
+            <a href="Reportes/reporte_productos.php?categoria=<?php echo $categoria; ?>" target="_blank" class="btn-3">Generar Reporte de Productos</a>
+        </div>
     </div>
 
     <!-- Se iincluyen los archivos JavaScript -->

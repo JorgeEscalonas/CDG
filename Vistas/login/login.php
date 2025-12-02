@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../../vistas/login/images/logocorto.ico">
+    <link rel="icon" href="../../Vistas/login/images/logocorto.ico">
     <title>Inicio de sesión</title>
     <link rel="stylesheet" href="../../Vistas/login/estiloLogin.css">
 </head>
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h1> Bienvenido</h1>
         <br>
         <!-- Mensaje de error -->
-        <?php if (isset($error)) echo "<p>$error</p>"; ?>
+        <?php if (isset($error)) echo "<p class='error'>$error</p>"; ?>
         <div class="input-group">
             <div class="input-container">
                 <input type="text" name="nombre" placeholder="Usuario">

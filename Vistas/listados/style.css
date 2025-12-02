@@ -1,113 +1,186 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap');
-
 * {
-    font-family: 'Poppins';
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* Prevent page scroll */
 }
 
 body {
     color: #333;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    /* Space for fixed header */
 }
 
 h2 {
     text-align: center;
-    margin: 20px 0;
+    margin: 10px 0;
     color: #495057;
+    font-size: 1.5rem;
+    flex-shrink: 0;
 }
 
+/* Contenedor Principal */
 .cont-table {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
+    width: 95%;
+    max-width: 1400px;
+    margin: 10px auto;
+    padding: 15px;
     background-color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
+    /* Flex layout to fill remaining space */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
 }
 
+/* Estilos de Tabla */
 table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 16px; 
+    font-size: 14px;
 }
 
 table th,
 table td {
-    padding: 8px; 
+    padding: 8px 6px;
     border: 1px solid #dee2e6;
     background-color: #fff;
+    vertical-align: middle;
 }
 
 table th {
     font-weight: bold;
     background-color: #f8f9fa;
     color: #212529;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
+table td:last-child {
+    padding: 5px;
+}
 
+/* Columnas Específicas */
+.accion-col {
+    width: 120px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.id {
+    width: 50px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* Botones Generales */
 .btn-1,
 .btn-2,
 .btn-3 {
+    display: inline-block;
+    padding: 6px 12px;
+    font-weight: 600;
     text-decoration: none;
     color: #fff;
-    padding: 5px 10px; 
-    display: inline-block;
-    margin: 0 5px;
-    border-radius: 20px;
-    transition: background-color 0.3s ease;
+    letter-spacing: 1px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
 }
 
+/* Variantes de Botones */
 .btn-1 {
     background-color: #dc3545;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
 }
 
 .btn-2 {
     background-color: #007bff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
 }
 
 .btn-3 {
-    background-color: #b57e10;
+    margin: 5px 4px;
 }
 
+/* Estados Hover */
 .btn-1:hover,
-.btn-2:hover,
+.btn-2:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
 .btn-3:hover {
-    background-color: #b72b37;
+    border-radius: 25px;
+    border: 0;
     cursor: pointer;
+    background: linear-gradient(135deg, #c68e17 0%, #a86b0e 100%);
+    transform: translateY(-2px);
+    color: #fff;
+    /* Button Depth */
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-table td:last-child {
-    padding: 5px; 
-}
-
-.accion-col {
-    width: 120px;
-    white-space: nowrap;
-}
-
+/* Botones en Tabla */
 .accion-col .btn-1,
 .accion-col .btn-2 {
-    padding: 3px 10px;
-    font-size: 15px;
+    padding: 4px 10px;
+    font-size: 12px;
+    margin: 0 2px;
 }
 
-.accion-col .btn-1,
-.accion-col .btn-2 {
-    margin-left: 5px;
-    margin-right: 5px;
+/* DataTables Wrapper adjustments */
+.dataTables_wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
 }
 
-.accion-col {
-    vertical-align: middle;
-    text-align: center;
+/* Form adjustments */
+form {
+    flex-shrink: 0;
+    margin-bottom: 10px;
 }
 
-.id {
-    width: 20px;
-    white-space: nowrap;
+/* Hide br tags inside container as they break flex layout */
+.cont-table>br {
+    display: none;
 }
 
+/* Button container for horizontal layout */
+.button-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
 
-.id {
-    vertical-align: middle;
-    text-align: center;
+/* Footer buttons alignment */
+.cont-table>a.btn-3 {
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: 10px;
 }
