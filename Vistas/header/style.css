@@ -17,7 +17,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 5px;
+    padding: 5px 20px;
     position: fixed;
     top: 0;
     left: 0;
@@ -26,19 +26,63 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.logo {
+    flex-shrink: 0;
+}
+
 .logo img {
     width: 300px;
     height: auto;
+    max-width: 100%;
+}
+
+/* Botón hamburguesa */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+    gap: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: #b57e10;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+nav {
+    display: flex;
+    align-items: center;
 }
 
 nav ul {
     list-style-type: none;
     display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
 }
 
 nav ul li {
-    margin-right: 20px;
-
+    margin: 0;
 }
 
 nav ul li a {
@@ -58,6 +102,8 @@ nav ul li a {
     transition: all 0.3s ease;
     position: relative;
     z-index: 1;
+    white-space: nowrap;
+    font-size: 14px;
 }
 
 .nav-button:hover {
@@ -65,14 +111,124 @@ nav ul li a {
     border: 0;
     cursor: pointer;
     background: linear-gradient(135deg, #c68e17 0%, #a86b0e 100%);
-    /*transform: translateY(-2px);*/
     color: #fff;
-    /* Button Depth */
     box-shadow:
         0 4px 15px rgba(0, 0, 0, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transform: scale(1.05);
     z-index: 2;
+}
 
+.nav-button.active {
+    border-radius: 25px;
+    background: linear-gradient(135deg, #c68e17 0%, #a86b0e 100%);
+    color: #fff;
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 700;
+}
+
+/* Media Queries para Responsive */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .logo img {
+        width: 250px;
+    }
+    
+    .nav-button {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+    
+    nav ul {
+        gap: 8px;
+    }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+    header {
+        padding: 10px 15px;
+        flex-wrap: wrap;
+    }
+    
+    .logo {
+        flex: 1;
+    }
+    
+    .logo img {
+        width: 200px;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    nav {
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        order: 3;
+    }
+    
+    nav.active {
+        max-height: 500px;
+        margin-top: 10px;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 10px 0;
+    }
+    
+    nav ul li {
+        width: 100%;
+        margin: 0;
+    }
+    
+    nav ul li a {
+        display: block;
+        width: 100%;
+        padding: 12px 20px;
+        text-align: left;
+        border-radius: 0;
+    }
+    
+    .nav-button {
+        width: 100%;
+        text-align: left;
+        padding: 12px 20px;
+        border-radius: 0;
+    }
+    
+    .nav-button:hover {
+        transform: none;
+        border-radius: 0;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .logo img {
+        width: 150px;
+    }
+    
+    header {
+        padding: 8px 10px;
+    }
+    
+    .nav-button {
+        font-size: 12px;
+        padding: 10px 15px;
+    }
 }
