@@ -28,6 +28,7 @@ if($varSesion == null || $varSesion == ''){
     <nav>
         <ul>
             <!-- Opciones del menú -->
+             <li><a href="index.php" class="nav-button">Inicio</a></li>
             <li><a href="?resp=producto" class="nav-button">Productos</a></li>
             <li><a href="?respc=categoria" class="nav-button">Categorias</a></li>
             <li><a href="?resps=proveedor" class="nav-button">Proveedores</a></li>
