@@ -49,7 +49,6 @@ include_once 'vistas/header/header.php';
                 <?php endforeach ?>
             </tbody>
         </table>
-        <br>
         <!-- Botones para registrar nuevas categorías y generar reportes -->
         <div class="button-container">
             <a href="?respc=categoriaC" class="btn-3">Registrar Categoria</a>

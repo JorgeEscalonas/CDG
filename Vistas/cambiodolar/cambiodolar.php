@@ -24,6 +24,14 @@ if($varSesion == null || $varSesion == ''){
     <!-- Formulario para ingresar la tasa de cambio del dólar -->
     <form id="formulario-dolar" method="post" action="?respdolar=guardarPrecio">
       <div>
+        <div class="radio-group">
+            <label>
+                <input type="radio" name="tipo_tasa" value="manual" checked> Manual
+            </label>
+            <label>
+                <input type="radio" name="tipo_tasa" value="api">Tasa BCV
+            </label>
+        </div>
         <label for="precio">Por favor, ingrese la tasa del día:</label>
         <input type="text" id="precio" name="precio" placeholder="00.00bs">
         <button type="submit">INGRESAR</button>
@@ -39,5 +47,6 @@ if($varSesion == null || $varSesion == ''){
   <!-- Se incluye los archivos JavaScript -->
   <script src="js/jquery-3.6.0.min.js"></script>
   <script src="js/validaciones.js"></script>
+  <script src="js/tasa_api.js"></script>
 </body>
 </html>

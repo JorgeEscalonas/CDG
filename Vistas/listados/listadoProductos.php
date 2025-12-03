@@ -102,7 +102,6 @@ $categorias = $control->MODEL->listarCategorias();
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <br>
         <!-- Botones para registrar nuevos productos y generar reportes -->
         <div class="button-container">
             <a href="?resp=nuevo" class="btn-3">Registrar Producto</a>
