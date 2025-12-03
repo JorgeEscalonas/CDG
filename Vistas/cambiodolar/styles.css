@@ -1,7 +1,7 @@
 * {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;
-    color: #333;
+  color: #333;
 }
 
 body {
@@ -95,6 +95,10 @@ input[type="text"] {
   text-align: center;
 }
 
+input[type="text"].tasa-oficial {
+  color: #333;
+}
+
 /* Buttons */
 button[type="submit"],
 .btn-cancelar {
@@ -141,19 +145,95 @@ button[type="submit"]:hover,
 .btn-3 {
   margin-top: 30px;
   display: inline-block;
+  background: linear-gradient(135deg, #b57e10 0%, #975f0c 100%);
+  padding: 8px 20px;
+  border-radius: 20px;
   color: #fff;
-  font-size: 0.9rem;
-  opacity: 0.9;
-  transition: opacity 0.3s;
+  font-size: 14px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .btn-3:hover {
-  opacity: 1;
-  text-decoration: underline;
+  background: linear-gradient(135deg, #c68e17 0%, #a86b0e 100%);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 6px 20px rgba(181, 126, 16, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  text-decoration: none;
 }
 
 a {
   text-decoration: none;
   color: #333;
+}
 
+/* Radio Button Group */
+.radio-group {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.radio-group label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+  width: auto;
+  grid-column: auto;
+  /* Override global label width if any */
+}
+
+.radio-group input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #b57e10;
+  border-radius: 50%;
+  margin-right: 12px;
+  outline: none;
+  position: relative;
+  background: rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.radio-group input[type="radio"]:checked {
+  background-color: #b57e10;
+  box-shadow: 0 0 15px rgba(181, 126, 16, 0.4);
+  border-color: #fff;
+}
+
+.radio-group input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.radio-group label:hover input[type="radio"] {
+  border-color: #fff;
+  transform: scale(1.1);
 }
