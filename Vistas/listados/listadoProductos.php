@@ -40,6 +40,7 @@ $categorias = $control->MODEL->listarCategorias();
 
         <!-- Formulario para filtrar por categoría -->
         <form action="" method="GET">
+            <input type="hidden" name="resp" value="producto">
             <label for="categoria">Filtrar por categoría:</label>
             <select name="categoria" id="categoria">
                 <option value="">Todas las categorías</option>
