@@ -61,5 +61,9 @@ class Control {
         include_once 'Vistas/listados/listadoProductos.php';
     }
 
+    public function dashboard() {
+        include_once 'Vistas/dashboard/dashboard.php';
+    }
+
 	
 }

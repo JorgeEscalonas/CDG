@@ -54,7 +54,7 @@ if(isset($_REQUEST['respc'])){
     }
 }
 
-// Muestra la página principal de productos si no se recibe ninguna solicitud específica
+// Muestra el dashboard si no se recibe ninguna solicitud específica
 if (!isset($_REQUEST['resp']) && !isset($_REQUEST['resps']) && !isset($_REQUEST['respdolar']) && !isset($_REQUEST['respc'])) {
-    $controlProducto->producto();
+    $controlProducto->dashboard();
 }
