@@ -59,50 +59,52 @@ $categorias = $control->MODEL->listarCategorias();
         </form>
 
         <!-- Tabla de productos -->
-        <table id="productosTable">
-            <thead>
-                <tr>
-                    <th class="id">ID</th>
-                    <th>Nombre</th>
-                    <th>Proveedor</th>
-                    <th>Categoría</th>
-                    <th>Costo</th>
-                    <th>PVP</th>
-                    <th>Bs.</th>
-                    <th class="accion-col" orderable="false">Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($productos as $producto): ?>
+        <div class="table-responsive">
+            <table id="productosTable">
+                <thead>
                     <tr>
-                        <td class="id"><?php echo $producto->idProducto; ?></td>
-                        <td><?php echo $producto->nombre; ?></td>
-                        <td><?php echo $producto->nombreP; ?></td>
-                        <td><?php echo $producto->nombreC; ?></td>
-                        <td>$<?php echo $producto->costo; ?></td>
-                        <td>$<?php echo $producto->pvp; ?></td>
-                        <td>
-                        <?php
-                        // Se calcula el precio en bolívares utilizando el último precio del dólar
-                        $ultimoPrecioDolar = $controlDolar->obtenerUltimoPrecioDolar();
-                        if ($ultimoPrecioDolar !== false) {
-                            $precioEnBolivares = $producto->pvp * $ultimoPrecioDolar['precio'];
-                            $precioFormateado = number_format($precioEnBolivares, 2, '.', '');
-                            echo 'Bs. ' . $precioFormateado;
-                        } else {
-                            echo "No se pudo obtener el precio del dólar.";
-                        }
-                        ?>
-                        </td>
-                        <!-- Acciones disponibles para cada producto -->
-                        <td class="accion-col">
-                            <a href="?resp=eliminar&id=<?php echo $producto->idProducto; ?>" class="btn-1" onclick="return confirmarEliminar()">Eliminar</a>
-                            <a href="?resp=nuevo&id=<?php echo $producto->idProducto; ?>" class="btn-2">Editar</a>
-                        </td>
+                        <th class="id">ID</th>
+                        <th>Nombre</th>
+                        <th>Proveedor</th>
+                        <th>Categoría</th>
+                        <th>Costo</th>
+                        <th>PVP</th>
+                        <th>Bs.</th>
+                        <th class="accion-col" orderable="false">Opciones</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($productos as $producto): ?>
+                        <tr>
+                            <td class="id"><?php echo $producto->idProducto; ?></td>
+                            <td><?php echo $producto->nombre; ?></td>
+                            <td><?php echo $producto->nombreP; ?></td>
+                            <td><?php echo $producto->nombreC; ?></td>
+                            <td>$<?php echo $producto->costo; ?></td>
+                            <td>$<?php echo $producto->pvp; ?></td>
+                            <td>
+                            <?php
+                            // Se calcula el precio en bolívares utilizando el último precio del dólar
+                            $ultimoPrecioDolar = $controlDolar->obtenerUltimoPrecioDolar();
+                            if ($ultimoPrecioDolar !== false) {
+                                $precioEnBolivares = $producto->pvp * $ultimoPrecioDolar['precio'];
+                                $precioFormateado = number_format($precioEnBolivares, 2, '.', '');
+                                echo 'Bs. ' . $precioFormateado;
+                            } else {
+                                echo "No se pudo obtener el precio del dólar.";
+                            }
+                            ?>
+                            </td>
+                            <!-- Acciones disponibles para cada producto -->
+                            <td class="accion-col">
+                                <a href="?resp=eliminar&id=<?php echo $producto->idProducto; ?>" class="btn-1" onclick="return confirmarEliminar()">Eliminar</a>
+                                <a href="?resp=nuevo&id=<?php echo $producto->idProducto; ?>" class="btn-2">Editar</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
         <!-- Botones para registrar nuevos productos y generar reportes -->
         <div class="button-container">
             <a href="?resp=nuevo" class="btn-3">Registrar Producto</a>

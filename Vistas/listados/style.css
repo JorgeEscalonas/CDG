@@ -4,11 +4,10 @@
 
 html,
 body {
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    /* Prevent page scroll */
+    /* overflow removed to allow mobile scroll */
 }
 
 body {
@@ -43,8 +42,14 @@ h2 {
     flex: 1;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     min-height: 0;
+}
+
+/* Permitir scroll horizontal en la tabla para móviles */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Estilos de Tabla */
@@ -162,7 +167,18 @@ table td:last-child {
 /* Form adjustments */
 form {
     flex-shrink: 0;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+form select {
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
 }
 
 /* Hide br tags inside container as they break flex layout */
@@ -183,4 +199,92 @@ form {
     flex-shrink: 0;
     align-self: flex-start;
     margin-top: 10px;
+}
+
+/* Media Queries para Responsive */
+@media (max-width: 768px) {
+    body {
+        padding-top: 100px;
+        /* Mas espacio para el header movil */
+        overflow: auto;
+        /* Permitir scroll en móviles si el contenido es alto */
+    }
+
+    .cont-table {
+        width: 98%;
+        padding: 10px;
+        margin: 5px auto;
+        overflow: visible;
+        /* Dejar que el scroll lo maneje el body */
+    }
+
+    form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    form select {
+        width: 100%;
+    }
+
+    form .btn-3 {
+        width: 100%;
+        margin: 5px 0 0 0;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    table {
+        font-size: 12px;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        /* Evita que las celdas se partan demasiado */
+        width: 100%;
+    }
+
+    .btn-1,
+    .btn-2,
+    .btn-3 {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .button-container {
+        justify-content: center;
+    }
+
+    /* Controles de DataTables */
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_paginate {
+        text-align: left !important;
+        margin-bottom: 10px;
+        display: block;
+        float: none !important;
+    }
+
+    .dataTables_wrapper .dataTables_filter input,
+    .dataTables_wrapper .dataTables_length select {
+        width: 100%;
+        margin-left: 0 !important;
+        margin-top: 5px;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 480px) {
+    .accion-col {
+        width: 80px;
+    }
+
+    .btn-3 {
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+    }
 }
