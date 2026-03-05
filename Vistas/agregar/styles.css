@@ -170,6 +170,7 @@ body {
     min-height: 100vh;
     margin: 0;
     background-color: #f0f0f0;
+    padding: 90px 10px 30px 10px;
 }
 
 /* Main Form Container - Mimicking .contenedor */
@@ -331,4 +332,28 @@ input[type="submit"]:hover,
 .categoria .column,
 .proveedores .column {
     width: 100%;
+}
+
+/* Nuevos estilos para Responsive */
+@media (max-width: 600px) {
+    body {
+        padding-top: 100px;
+    }
+
+    form {
+        padding: 25px 15px;
+        width: 95%;
+    }
+
+    legend {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    input[type="submit"],
+    .btn-cancelar {
+        width: 100%;
+        margin: 10px 0;
+        display: flex;
+    }
 }

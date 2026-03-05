@@ -14,33 +14,32 @@ if ($resultado) {
     }
 }
 
-$pdf = new FPDF();
+$pdf = new FPDF('P', 'mm', 'A4');
+$pdf->SetMargins(10, 5, 10);
+$pdf->SetAutoPageBreak(true, 10);
 $pdf->AddPage();
 
-$pdf->AliasNbPages();
+$pdf->Image('../Vistas/header/logo.png', 10, 5, 40); 
+$pdf->SetY(10);
 
-$pdf->Image('../Vistas/header/logo.png', 10, 10, 50); 
-$pdf->Ln(10);
-
-$pdf->SetFont('Arial','B',16);
-$pdf->Cell(0,10, 'Reporte de Categorias',0,1,'C');
-$pdf->Ln(10);
-
+$pdf->SetFont('Arial', 'B', 14);
+$pdf->Cell(0, 8, 'Reporte de Categorias', 0, 1, 'C');
+$pdf->Ln(2);
 
 $ancho_pagina = $pdf->GetPageWidth();
-$ancho_celda = 20 + 90 + 1 + 1; 
+$ancho_celda = 15 + 90; 
 $posicion_x = ($ancho_pagina - $ancho_celda) / 2;
 
-$pdf->SetFont('Arial','B',12);
+$pdf->SetFont('Arial', 'B', 10);
 $pdf->SetX($posicion_x); 
-$pdf->Cell(15,10,'ID',1,0,'C');
-$pdf->Cell(90,10,'Nombre',1,1,'C');
+$pdf->Cell(15, 6, 'ID', 1, 0, 'C');
+$pdf->Cell(90, 6, 'Nombre', 1, 1, 'C');
 
-$pdf->SetFont('Arial','',12);
+$pdf->SetFont('Arial', '', 9);
 foreach($categorias as $categoria) {
     $pdf->SetX($posicion_x); 
-    $pdf->Cell(15,10,$categoria['idCategoria'],1,0,'C');
-    $pdf->Cell(90,10,utf8_decode($categoria['nombreC']),1,1,'C');
+    $pdf->Cell(15, 6, $categoria['idCategoria'], 1, 0, 'C');
+    $pdf->Cell(90, 6, utf8_decode($categoria['nombreC']), 1, 1, 'C');
 }
 
 function Footer() {

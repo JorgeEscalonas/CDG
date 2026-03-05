@@ -14,30 +14,71 @@ if ($resultado) {
     }
 }
 
-$pdf = new FPDF();
+$pdf = new FPDF('P', 'mm', 'A4');
+$pdf->SetMargins(10, 5, 10);
+$pdf->SetAutoPageBreak(true, 10);
 $pdf->AddPage();
 
-$pdf->Image('../Vistas/header/logo.png', 10, 10, 50);
-$pdf->Ln(10);
+$pdf->Image('../Vistas/header/logo.png', 10, 5, 40);
+$pdf->SetY(10);
 
-$pdf->SetFont('Arial', 'B', 16);
-$pdf->Cell(0, 10, 'Reporte de Proveedores', 0, 1, 'C');
-$pdf->Ln(10);
+$pdf->SetFont('Arial', 'B', 14);
+$pdf->Cell(0, 8, 'Reporte de Proveedores', 0, 1, 'C');
+$pdf->Ln(2);
 
 $ancho_pagina = $pdf->GetPageWidth();
-$ancho_celda = 20 + 90 + 1 + 1; 
-$posicion_x = ($ancho_pagina - $ancho_celda) / 2;
+$ancho_columna = 10 + 80; // 90mm total por columna
+$gap = 5; // Espacio entre columnas
+$pos_x_col1 = 12.5; // Centrado manual aproximado: (210 - (90*2 + 5)) / 2
+$pos_x_col2 = $pos_x_col1 + $ancho_columna + $gap;
 
-$pdf->SetFont('Arial', 'B', 12);
-$pdf->SetX($posicion_x);
-$pdf->Cell(15, 10, 'ID', 1, 0, 'C');
-$pdf->Cell(90, 10, 'Nombre', 1, 1, 'C');
+// Encabezados para ambas columnas
+$pdf->SetFont('Arial', 'B', 10);
+$pdf->SetX($pos_x_col1);
+$pdf->Cell(10, 6, 'ID', 1, 0, 'C');
+$pdf->Cell(80, 6, 'Nombre', 1, 0, 'C');
+$pdf->SetX($pos_x_col2);
+$pdf->Cell(10, 6, 'ID', 1, 0, 'C');
+$pdf->Cell(80, 6, 'Nombre', 1, 1, 'C');
 
-$pdf->SetFont('Arial', '', 12);
+$pdf->SetFont('Arial', '', 9);
+
+$col = 1; // Columna actual
+$y_inicial = $pdf->GetY(); // Guardar posición inicial de la tabla
+$limite_y = 280; // Límite inferior de la página (A4 es 297mm)
+
 foreach ($proveedores as $proveedor) {
-    $pdf->SetX($posicion_x); 
-    $pdf->Cell(15, 10, $proveedor['idProveedor'], 1, 0, 'C');
-    $pdf->Cell(90, 10, utf8_decode($proveedor['nombreP']), 1, 1, 'C');
+    // Si llegamos al límite de la página en la columna actual
+    if ($pdf->GetY() >= $limite_y) {
+        if ($col == 1) {
+            $col = 2; // Pasar a la columna 2
+            $pdf->SetY($y_inicial); // Volver al inicio de la tabla
+        } else {
+            $pdf->AddPage(); // Nueva página
+            $col = 1;
+            // Repetir encabezados si hay nueva página
+            $pdf->SetFont('Arial', 'B', 10);
+            $pdf->SetX($pos_x_col1);
+            $pdf->Cell(10, 6, 'ID', 1, 0, 'C');
+            $pdf->Cell(80, 6, 'Nombre', 1, 0, 'C');
+            $pdf->SetX($pos_x_col2);
+            $pdf->Cell(10, 6, 'ID', 1, 0, 'C');
+            $pdf->Cell(80, 6, 'Nombre', 1, 1, 'C');
+            $pdf->SetFont('Arial', '', 9);
+            $y_inicial = $pdf->GetY();
+        }
+    }
+
+    // Posicionar según la columna actual
+    if ($col == 1) {
+        $pdf->SetX($pos_x_col1);
+        $pdf->Cell(10, 5.5, $proveedor['idProveedor'], 1, 0, 'C');
+        $pdf->Cell(80, 5.5, utf8_decode($proveedor['nombreP']), 1, 1, 'C');
+    } else {
+        $pdf->SetX($pos_x_col2);
+        $pdf->Cell(10, 5.5, $proveedor['idProveedor'], 1, 0, 'C');
+        $pdf->Cell(80, 5.5, utf8_decode($proveedor['nombreP']), 1, 1, 'C');
+    }
 }
 
 $pdf->Output();
